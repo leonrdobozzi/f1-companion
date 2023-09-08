@@ -29,23 +29,25 @@ export default function DriverStandings() {
             <th className="p-1 lg:text-2xl">Piloto</th>
             <th className="p-1 lg:text-2xl">Pontos</th>
           </tr>
-          {driverStandings?.map((driver: any) => (
-            <tr key={driver?.Driver?.code}>
-              <td className="text-center lg:text-2xl font-bold border border-gray-200 border-solid p-1">
-                {driver?.position}
-              </td>
-              <td className="text-center border lg:text-2xl border-gray-200 border-solid p-1">
-                <span className="text-xs lg:text-base text-[#DA2535] font-bold">
-                  {driver?.Driver?.givenName}
-                </span>
-                <br />
-                {driver?.Driver?.familyName}
-              </td>
-              <td className="text-center border lg:text-2xl border-gray-200 border-solid p-1">
-                {driver?.points}
-              </td>
-            </tr>
-          ))}
+          <tbody>
+            {driverStandings?.map((driver: any) => (
+              <tr key={driver?.Driver?.code}>
+                <td className="text-center lg:text-2xl font-bold border border-gray-200 border-solid p-1">
+                  {driver?.position}
+                </td>
+                <td className="text-center border lg:text-2xl border-gray-200 border-solid p-1">
+                  <span className="text-xs lg:text-base text-[#DA2535] font-bold">
+                    {driver?.Driver?.givenName}
+                  </span>
+                  <br />
+                  {driver?.Driver?.familyName}
+                </td>
+                <td className="text-center border lg:text-2xl border-gray-200 border-solid p-1">
+                  {driver?.points}
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

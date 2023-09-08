@@ -1,8 +1,6 @@
 "use client";
 import { api } from "@/services/axios";
 import { useState, useEffect } from "react";
-import AwesomeSlider from "react-awesome-slider";
-import "react-awesome-slider/dist/styles.css";
 
 export default function NextRaces() {
   const [nextRaces, setNextRaces] = useState<any>();
@@ -23,6 +21,8 @@ export default function NextRaces() {
       return actualDate <= itemDate;
     });
 
+    console.log(nextRaceFilter);
+
     setNextRaces(nextRaceFilter);
   }
 
@@ -31,11 +31,17 @@ export default function NextRaces() {
   }, []);
 
   return (
-    <AwesomeSlider bullets={false} animation="cubeAnimation">
+    <div className="p-6 bg-gray-50">
       {nextRaces?.map((race: any) => (
-        <div key={race?.Circuit?.circuitId}>
-          <h3 className="text-white text-2xl lg:text-6xl">{race?.raceName}</h3>
-          <p className="text-white text-base lg:text-2xl text-center font-bold mt-6">
+        <div
+          className="border-l-[#DA2535] border-l-4 border-solid my-5 lg:my-10 pl-5"
+          key={race?.Circuit?.circuitId}
+        >
+          <h3 className="text-black text-xl lg:text-4xl">{race?.raceName}</h3>
+          <p className="text-gray-500 text-xs mt-1 font-bold">
+            {race?.Circuit?.Location?.locality}
+          </p>
+          <p className="text-black text-sm lg:text-base  font-bold mt-1">
             {race?.FirstPractice.date.split("-")[2] +
               "/" +
               race?.FirstPractice.date.split("-")[1] +
@@ -44,6 +50,6 @@ export default function NextRaces() {
           </p>
         </div>
       ))}
-    </AwesomeSlider>
+    </div>
   );
 }
