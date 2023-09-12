@@ -11,6 +11,7 @@ export default function Hero() {
       <a
         className="mt-10 bg-[#DA2535] w-full lg:w-max text-white text-base p-3 rounded-md block text-center hover:brightness-150"
         href="/standings"
+        target="_blank"
       >
         VER CLASSIFICAÇÃO
       </a>

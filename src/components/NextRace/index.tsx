@@ -7,11 +7,7 @@ export default function NextRace() {
   const [nextRace, setNextRace] = useState<any>();
   const [isLoading, setIsLoading] = useState(true);
   async function getCurrentRaces() {
-    const { data } = await api.get("/current.json", {
-      onDownloadProgress: (progressEvent) => {
-        console.log(progressEvent.loaded);
-      },
-    });
+    const { data } = await api.get("/current.json");
 
     const actualDate = new Date();
 

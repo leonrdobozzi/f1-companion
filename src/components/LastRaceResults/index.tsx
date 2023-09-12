@@ -21,7 +21,7 @@ export default function LastRaceResults() {
         <p className="text-center text-2xl pb-5 font-bold">
           Resultados do {lastRaceResults?.raceName}
         </p>
-        {lastRaceResults?.Results.map((result: ILastRaceResult) => (
+        {lastRaceResults?.Results.map((result: ILastRaceResult, index) => (
           <div key={result.Driver.code} className="py-3 ">
             <div className="flex justify-between items-center">
               <p className="text-sm lg:text-4xl text-[#DA2535] font-bold">
@@ -44,7 +44,11 @@ export default function LastRaceResults() {
                 {result.FastestLap?.Time.time}
               </span>
             </p>
-            <hr className="my-5" />
+            <hr
+              className={`mt-5 ${
+                lastRaceResults.Results.length === index + 1 ? "hidden" : ""
+              }`}
+            />
           </div>
         ))}
       </div>
