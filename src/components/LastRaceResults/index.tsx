@@ -3,20 +3,26 @@
 import { ILastRaceResults, ILastRaceResult } from "@/@types";
 import { api } from "@/services/axios";
 import { useEffect, useState } from "react";
+import Loading from "../Loading";
 
 export default function LastRaceResults() {
   const [lastRaceResults, setLastRaceResults] = useState<ILastRaceResults>();
+  const [isLoading, setIsLoading] = useState(true);
+
   async function getLastRaceResults() {
     const { data } = await api.get("/current/last/results.json");
 
     setLastRaceResults(data.MRData.RaceTable.Races[0]);
+    setIsLoading(false);
   }
 
   useEffect(() => {
     getLastRaceResults();
   }, []);
   return (
-    <div className="px-6 pt-6 pb-6 bg-[url(/bg-2.jpg)] bg-center bg-fixed ">
+    <div className="px-6 pt-6 pb-6 bg-[url(/bg-2.jpg)] bg-center bg-fixed relative">
+      {isLoading ? <Loading /> : null}
+
       <div className="bg-white p-5 rounded-md max-w-6xl mx-auto">
         <p className="text-center text-2xl pb-5 font-bold">
           Resultados do {lastRaceResults?.raceName}
@@ -41,7 +47,9 @@ export default function LastRaceResults() {
             <p className="text-gray-400 font-bold text-xs mt-1">
               Volta mais rápida:{" "}
               <span className="text-[#DA2535]">
-                {result.FastestLap?.Time.time}
+                {result.FastestLap?.Time.time
+                  ? result.FastestLap?.Time.time
+                  : "--/--/--"}
               </span>
             </p>
             <hr

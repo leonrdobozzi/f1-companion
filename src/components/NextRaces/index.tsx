@@ -3,10 +3,12 @@ import { api } from "@/services/axios";
 import { useState, useEffect } from "react";
 import Driver from "./Driver";
 import { ILastRaceResults, INextRace } from "@/@types";
+import Loading from "../Loading";
 
 export default function NextRaces() {
   const [nextRaces, setNextRaces] = useState<INextRace[]>([]);
   const [lastRaceResults, setLastRaceResults] = useState<ILastRaceResults>();
+  const [isLoading, setIsLoading] = useState(true);
 
   async function getNextRaces() {
     const { data } = await api.get("/current.json");
@@ -43,6 +45,7 @@ export default function NextRaces() {
     ]);
     setNextRaces(nextRacesPromise);
     setLastRaceResults(lastRaceResultsPromise);
+    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -50,7 +53,9 @@ export default function NextRaces() {
   }, []);
 
   return (
-    <div className="p-6 flex flex-col-reverse items-center lg:flex-row justify-between">
+    <div className="relative p-6 flex flex-col-reverse items-center lg:items-start lg:flex-row justify-between">
+      {isLoading ? <Loading /> : null}
+
       <div>
         <h2 className="text-center text-4xl text-[#DA2535] mt-5 mb-2 font-bold">
           Próximas corridas
