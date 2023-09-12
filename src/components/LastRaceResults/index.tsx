@@ -1,10 +1,11 @@
 "use client";
 
+import { ILastRaceResults, ILastRaceResult } from "@/@types";
 import { api } from "@/services/axios";
 import { useEffect, useState } from "react";
 
 export default function LastRaceResults() {
-  const [lastRaceResults, setLastRaceResults] = useState<any>();
+  const [lastRaceResults, setLastRaceResults] = useState<ILastRaceResults>();
   async function getLastRaceResults() {
     const { data } = await api.get("/current/last/results.json");
 
@@ -20,27 +21,27 @@ export default function LastRaceResults() {
         <p className="text-center text-2xl pb-5 font-bold">
           Resultados do {lastRaceResults?.raceName}
         </p>
-        {lastRaceResults?.Results.map((result: any) => (
-          <div key={result?.Driver.Code} className="py-3 ">
+        {lastRaceResults?.Results.map((result: ILastRaceResult) => (
+          <div key={result.Driver.code} className="py-3 ">
             <div className="flex justify-between items-center">
               <p className="text-sm lg:text-4xl text-[#DA2535] font-bold">
-                {result?.position}
+                {result.position}
               </p>
               <p className="text-base lg:text-2xl flex-1 text-center">
-                {result?.Driver.givenName} {result?.Driver.familyName}
+                {result.Driver.givenName} {result.Driver.familyName}
               </p>
               <p className="text-[#DA2535] text-sm lg:text-2xl font-bold">
-                {result?.points > 0 ? "+" + result?.points : ""}
+                {Number(result.points) > 0 ? "+" + result.points : ""}
               </p>
             </div>
             <p className="text-gray-400 font-bold mt-3 text-xs lg:text-base">
               Equipe:{" "}
-              <span className="text-[#DA2535]">{result?.Constructor.name}</span>
+              <span className="text-[#DA2535]">{result.Constructor.name}</span>
             </p>
             <p className="text-gray-400 font-bold text-xs mt-1">
               Volta mais rápida:{" "}
               <span className="text-[#DA2535]">
-                {result?.FastestLap?.Time.time}
+                {result.FastestLap?.Time.time}
               </span>
             </p>
             <hr className="my-5" />
