@@ -20,7 +20,10 @@ export default function LastRaceResults() {
     getLastRaceResults();
   }, []);
   return (
-    <div className="px-6 pt-6 pb-6 bg-[url(/bg-2.jpg)] bg-center bg-fixed relative">
+    <div
+      id="nextRace"
+      className="px-6 pt-6 pb-6 bg-[url(/bg-2.jpg)] bg-center bg-fixed relative"
+    >
       {isLoading ? <Loading /> : null}
 
       <div className="bg-white p-5 rounded-md max-w-6xl mx-auto">

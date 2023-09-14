@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "F1 Companion",
   description: "Acompanhe resultados da Fórmula 1 de forma simplificada.",
+  alternates: {
+    canonical: "https://f1-companion-lake.vercel.app/",
+  },
 };
 
 export default function RootLayout({
