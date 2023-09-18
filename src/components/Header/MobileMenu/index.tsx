@@ -52,7 +52,7 @@ export default function MobileMenu() {
       <nav
         className={`lg:hidden fixed w-full h-full bg-gray-500 top-0 ${
           menuIsOpen ? "left-0" : "left-[150%]"
-        } flex flex-col items-center justify-center gap-10 transition-all`}
+        } flex flex-col items-center justify-center gap-10 transition-all z-50`}
       >
         <div onClick={() => setMenuIsOpen(!menuIsOpen)}>
           <LinkButton link="standings" text="Classificação" />

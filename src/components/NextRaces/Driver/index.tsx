@@ -24,9 +24,9 @@ export default function Driver({
         {driverLastGP}
       </h3>
       <Image
-        src={`/${driverId}.webp`}
-        width="300"
-        height="200"
+        src={`/${driverId}.png`}
+        width="400"
+        height="300"
         alt={`${driverName} ${driverLastName}`}
       />
       <hr className="w-full" />

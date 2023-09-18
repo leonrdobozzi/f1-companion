@@ -32,7 +32,10 @@ export default function NextRace() {
     getCurrentRaces();
   }, []);
   return (
-    <div className="relative px-6 lg:px-10 pt-6 lg:pt-10 pb-6 lg:pb-10">
+    <div
+      className="relative px-6 lg:px-10 pt-6 lg:pt-10 pb-6 lg:pb-10"
+      id="nextRace"
+    >
       {isLoading ? <Loading /> : null}
       <p className="text-gray-300 text-sm lg:text-base font-bold">
         Próxima corrida:

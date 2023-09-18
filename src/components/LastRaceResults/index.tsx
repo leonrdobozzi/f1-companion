@@ -20,10 +20,7 @@ export default function LastRaceResults() {
     getLastRaceResults();
   }, []);
   return (
-    <div
-      id="nextRace"
-      className="px-6 pt-6 pb-6 bg-[url(/bg-2.jpg)] bg-center bg-fixed relative"
-    >
+    <div className="px-6 pt-6 pb-6 bg-[url(/bg-2.jpg)] bg-center bg-fixed relative">
       {isLoading ? <Loading /> : null}
 
       <div className="bg-white p-5 rounded-md max-w-6xl mx-auto">
@@ -49,10 +46,14 @@ export default function LastRaceResults() {
             </p>
             <p className="text-gray-400 font-bold text-xs mt-1">
               Volta mais rápida:{" "}
-              <span className="text-[#DA2535]">
+              <span
+                className={`text-[#DA2535] inline-block ${
+                  !result.FastestLap?.Time.time ? "animate-pulse" : ""
+                }`}
+              >
                 {result.FastestLap?.Time.time
                   ? result.FastestLap?.Time.time
-                  : "--/--/--"}
+                  : "--:--:--"}
               </span>
             </p>
             <hr
