@@ -20,13 +20,27 @@ describe("API REQUEST GET A VALID RESPONSE", () => {
 });
 
 describe("VALIDATE HOME PAGE", () => {
-  it("VALIDATE IF THE PAGE IS LOADED", () => {
-    beforeEach(() => {
-      cy.visit("http://localhost:3000");
-    });
+  beforeEach(() => {
+    cy.visit("http://localhost:3000");
+  });
+  it("VALIDATE IF THE API DATA IS LOADED", () => {
+    cy.get("div#nextRace")
+      .invoke("val")
+      .then((text) => {
+        const someText = text as string;
+        expect(someText).to.not.equal("Undefined");
+      });
+  });
+});
+
+describe("VALIDATE LOGIN AND SIGN UP PAGES", () => {
+  beforeEach(() => {
+    cy.visit("http://localhost:3000/login");
   });
 
-  it("VALIDATE IF THE API DATA IS LOADED", () => {
-    cy.get("div#nextRace");
+  it("SEND LOGIN DATA", () => {
+    cy.get("input[type=email]").type("teste@teste.com");
+    cy.get("input[type=password]").type("teste");
+    cy.get("button").contains("Login").click();
   });
 });

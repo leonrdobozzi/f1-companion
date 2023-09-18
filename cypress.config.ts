@@ -6,5 +6,7 @@ export default defineConfig({
       // implement node event listeners here
     },
     baseUrl: "https://aqueous-brook-60480.herokuapp.com/",
+    viewportWidth: 1920,
+    viewportHeight: 1080,
   },
 });
