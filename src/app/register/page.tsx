@@ -23,11 +23,11 @@ export default function Login() {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     server
-      .post("/auth", {
+      .post("/register", {
         data,
       })
       .then(() => {
-        router.push("/");
+        router.push("/login");
       })
       .catch((e) => console.log(e));
   };
@@ -38,6 +38,11 @@ export default function Login() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col items-center gap-10"
       >
+        <input
+          className="w-96 h-10 px-5 rounded-md text-gray-800 placeholder:text-gray-800 outline-none"
+          placeholder="Nome"
+          {...register("name")}
+        />
         <input
           className="w-96 h-10 px-5 rounded-md text-gray-800 placeholder:text-gray-800 outline-none"
           placeholder="Email"
