@@ -38,17 +38,17 @@ export default function NextRaces() {
     return data.MRData.RaceTable.Races[0];
   }
 
-  async function loadRacesData() {
-    const [nextRacesPromise, lastRaceResultsPromise] = await Promise.all([
-      getNextRaces(),
-      getLastRaceResult(),
-    ]);
-    setNextRaces(nextRacesPromise);
-    setLastRaceResults(lastRaceResultsPromise);
-    setIsLoading(false);
-  }
-
   useEffect(() => {
+    async function loadRacesData() {
+      const [nextRacesPromise, lastRaceResultsPromise] = await Promise.all([
+        getNextRaces(),
+        getLastRaceResult(),
+      ]);
+      setNextRaces(nextRacesPromise);
+      setLastRaceResults(lastRaceResultsPromise);
+      setIsLoading(false);
+    }
+
     loadRacesData();
   }, []);
 

@@ -1,34 +1,9 @@
 "use client";
 
+import { IDriverStandings } from "@/@types";
 import Loading from "@/components/Loading";
 import { api } from "@/services/axios";
-import { data } from "autoprefixer";
 import { useState, useEffect } from "react";
-
-interface IDriverStandings {
-  position: number;
-  positionText: number;
-  points: number;
-  wins: number;
-  Driver: {
-    driverId: string;
-    permanentNumber: number;
-    code: string;
-    url: string;
-    givenName: string;
-    familyName: string;
-    dateOfBirth: string;
-    nationality: string;
-  };
-  Constructors: [
-    {
-      constructorId: string;
-      url: string;
-      name: string;
-      nationality: string;
-    },
-  ];
-}
 
 export default function StandingsTable() {
   const [driverStandings, setDriverStandings] = useState<IDriverStandings[]>(

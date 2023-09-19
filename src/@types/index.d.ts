@@ -106,4 +106,35 @@ interface IDriver {
   nationality: string;
 }
 
-export { ILastRaceResults, ILastRaceResult, INextRace, IDriver };
+interface IDriverStandings {
+  position: number;
+  positionText: number;
+  points: number;
+  wins: number;
+  Driver: {
+    driverId: string;
+    permanentNumber: number;
+    code: string;
+    url: string;
+    givenName: string;
+    familyName: string;
+    dateOfBirth: string;
+    nationality: string;
+  };
+  Constructors: [
+    {
+      constructorId: string;
+      url: string;
+      name: string;
+      nationality: string;
+    },
+  ];
+}
+
+export {
+  ILastRaceResults,
+  ILastRaceResult,
+  INextRace,
+  IDriver,
+  IDriverStandings,
+};
