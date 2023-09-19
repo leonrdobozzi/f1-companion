@@ -97,7 +97,11 @@ export default function Bets() {
         <div className="flex items-center justify-center mt-10">
           <div>
             <Image
-              src={`/${driver?.driverId ? driver?.driverId : "silhouette"}.png`}
+              src={`/${
+                driver?.driverId && driver?.driverId !== undefined
+                  ? driver?.driverId
+                  : "silhouette"
+              }.png`}
               alt="Piloto atual para sua votação"
               width="400"
               height="300"
