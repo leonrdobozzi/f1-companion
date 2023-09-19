@@ -1,9 +1,9 @@
+import HeroTitle from "./HeroTitle";
+
 export default function Hero() {
   return (
     <div className="pt-[105px] pb-[89px]">
-      <h1 className="text-white text-4xl lg:text-6xl font-bold italic mb-4">
-        FÓRMULA 1
-      </h1>
+      <HeroTitle />
       <p className="text-white text-base lg:text-2xl max-w-4xl leading-relaxed">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat
         tempore reiciendis qui maxime itaque.

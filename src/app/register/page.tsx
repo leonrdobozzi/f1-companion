@@ -29,7 +29,7 @@ export default function Login() {
       .then(() => {
         router.push("/login");
       })
-      .catch((e) => console.log(e));
+      .catch((e) => e);
   };
 
   return (

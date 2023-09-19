@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Hero from "@/components/Hero";
 import Header from "@/components/Header";
+import AuthContext from "@/contexts/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +22,13 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={inter.className}>
-        <div className="bg-[url(/bg.jpg)] bg-fixed bg-center px-6">
-          <Header />
-          <Hero />
-        </div>
-        {children}
+        <AuthContext>
+          <div className="bg-[url(/bg.jpg)] bg-fixed bg-center px-6">
+            <Header />
+            <Hero />
+          </div>
+          {children}
+        </AuthContext>
       </body>
     </html>
   );

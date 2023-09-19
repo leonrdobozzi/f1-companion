@@ -1,9 +1,9 @@
 "use client";
 
-import { server } from "@/services/axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { signIn, useSession } from "next-auth/react";
 
 type Inputs = {
   name: string;
@@ -22,14 +22,18 @@ export default function Login() {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    server
-      .post("/auth", {
-        data,
-      })
-      .then(() => {
+    signIn("credentials", {
+      ...data,
+      redirect: false,
+    }).then((callback) => {
+      if (callback?.error) {
+        throw new Error("Invalid credentials");
+      }
+
+      if (callback?.ok && !callback?.error) {
         router.push("/");
-      })
-      .catch((e) => console.log(e));
+      }
+    });
   };
 
   return (

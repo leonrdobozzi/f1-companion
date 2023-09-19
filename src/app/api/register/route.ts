@@ -8,8 +8,6 @@ export async function POST(request: Request) {
 
     const { email, password, name } = body.data;
 
-    console.log(typeof email, password, name);
-
     if (!email || !name || !password) {
       return new NextResponse("Missing info", { status: 400 });
     }

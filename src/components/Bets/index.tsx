@@ -80,7 +80,6 @@ export default function Bets() {
                   <>
                     <p
                       onClick={() => {
-                        console.log(driverMaped);
                         setDriver(driverMaped);
                         setFinding(false);
                       }}
