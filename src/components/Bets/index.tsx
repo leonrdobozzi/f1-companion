@@ -89,7 +89,7 @@ export default function Bets() {
   }, [session?.user?.email]);
 
   return (
-    <div className="relative">
+    <div className={`relative ${!session && "hidden"}`}>
       {isLoading ? <Loading /> : null}
       <div
         className={`absolute top-0 w-full h-full bg-[#181818] z-50 pointer-events-none bg-opacity-90 backdrop-blur-lg flex items-center justify-center ${
