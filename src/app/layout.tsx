@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import Hero from "@/components/Hero";
 import Header from "@/components/Header";
 import AuthContext from "@/contexts/AuthContext";
+import ToasterContext from "@/contexts/ToasterContext";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,11 +25,13 @@ export default function RootLayout({
     <html lang="pt-br">
       <body className={inter.className}>
         <AuthContext>
-          <div className="bg-[url(/bg.jpg)] bg-fixed bg-center px-6">
+          <ToasterContext />
+          <div className="bg-[url(/bg.png)] bg-fixed bg-center px-6 min-h-screen">
             <Header />
             <Hero />
           </div>
           {children}
+          <Footer />
         </AuthContext>
       </body>
     </html>
