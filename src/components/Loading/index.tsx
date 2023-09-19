@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="absolute w-full h-full bg-white top-0 left-0 items-center justify-center flex z-50">
+    <div className="absolute w-full h-full bg-[#1B1B1B] top-0 left-0 items-center justify-center flex z-50">
       <div role="status">
         <svg
           aria-hidden="true"

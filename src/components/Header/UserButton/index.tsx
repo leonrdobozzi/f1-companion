@@ -18,14 +18,14 @@ export default function UserButton() {
       {!isLogged ? (
         <Link
           href="/login"
-          className="bg-[#DA2535] w-full lg:w-max text-white text-base p-3 rounded-md block text-center hover:brightness-150"
+          className="bg-[#DA2535] w-full lg:w-max text-white text-base p-3 rounded-lg block text-center hover:brightness-150"
         >
           Fazer Login
         </Link>
       ) : (
         <button
           onClick={() => signOut()}
-          className="bg-[#DA2535] w-full lg:w-max text-white text-base p-3 rounded-md block text-center hover:brightness-150"
+          className="bg-[#DA2535] w-full lg:w-max text-white text-base p-3 rounded-lg block text-center hover:brightness-150"
         >
           Sair
         </button>

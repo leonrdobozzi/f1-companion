@@ -1,7 +1,6 @@
 "use client";
 import { api } from "@/services/axios";
 import { useState, useEffect } from "react";
-import Driver from "./Driver";
 import { ILastRaceResults, INextRace } from "@/@types";
 import Loading from "../Loading";
 
@@ -53,11 +52,11 @@ export default function NextRaces() {
   }, []);
 
   return (
-    <div className="relative p-6 flex flex-col-reverse items-center lg:items-start lg:flex-row justify-between">
+    <div className="relative p-6 flex flex-col-reverse items-center lg:items-start lg:flex-row justify-between  bg-[#1b1b1b]">
       {isLoading ? <Loading /> : null}
 
-      <div>
-        <h2 className="text-center text-4xl text-[#DA2535] mt-5 mb-2 font-bold">
+      <div className="max-w-[1280px] mx-auto w-full">
+        <h2 className="text-4xl text-[#DA2535] mt-5 mb-2 font-bold">
           Próximas corridas
         </h2>
         {nextRaces.map((race: INextRace) => (
@@ -65,11 +64,13 @@ export default function NextRaces() {
             className="border-l-[#DA2535] border-l-4 border-solid my-5 lg:my-10 pl-5"
             key={race.Circuit.circuitId}
           >
-            <h3 className="text-black text-xl lg:text-4xl">{race.raceName}</h3>
+            <h3 className="text-xl lg:text-4xl text-white font-bold">
+              {race.raceName}
+            </h3>
             <p className="text-gray-500 text-xs mt-1 font-bold">
               {race.Circuit.Location.locality}
             </p>
-            <p className="text-black text-sm lg:text-base font-bold mt-1">
+            <p className="text-sm lg:text-base font-bold mt-1 text-[#DA2535]">
               {race.FirstPractice.date.split("-")[2] +
                 "/" +
                 race.FirstPractice.date.split("-")[1] +
@@ -79,16 +80,6 @@ export default function NextRaces() {
           </div>
         ))}
       </div>
-      <Driver
-        key={lastRaceResults?.Results[0].Driver.driverId}
-        driverLastName={lastRaceResults?.Results[0].Driver.familyName}
-        driverName={lastRaceResults?.Results[0].Driver.givenName}
-        driverId={lastRaceResults?.Results[0].Driver.driverId}
-        driverBestLap={
-          lastRaceResults?.Results[0].FastestLap.Time.time as string | undefined
-        }
-        driverLastGP={lastRaceResults?.Circuit.circuitName}
-      />
     </div>
   );
 }

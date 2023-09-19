@@ -33,7 +33,7 @@ export default function Login() {
   };
 
   return (
-    <div className="absolute top-0 left-0 w-full h-full bg-gray-400 bg-opacity-95 flex items-center justify-center">
+    <div className="absolute top-0 left-0 w-full h-full bg-[#1B1B1B] bg-opacity-95 flex items-center justify-center">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col items-center gap-10"
@@ -56,10 +56,10 @@ export default function Login() {
         <input
           placeholder="Login"
           type="submit"
-          className="mt-2 bg-[#DA2535] w-full text-white text-base p-3 rounded-md block text-center hover:brightness-150"
+          className="mt-2 bg-[#DA2535] w-full text-white text-base p-3 rounded-md block text-center hover:brightness-150 cursor-pointer"
         />
 
-        <Link className="text-white" href="/">
+        <Link className="text-white cursor-pointer" href="/">
           Ou então,
           <p className="inline text-[#DA2535] underline underline-offset-4 font-bold">
             {" "}
