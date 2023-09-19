@@ -105,7 +105,7 @@ export default function Bets() {
               alt="Piloto atual para sua votação"
               width="400"
               height="300"
-              className="w-[500px] h-[300px]"
+              className="w-[400px] h-[300px]"
             />
             <hr />
             <h3 className="text-4xl text-[#DA2535] font-bold text-center mt-5">
