@@ -23,6 +23,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
+      <head>
+        <meta name="google-site-verification" content="s_IXTNruZUE8kOrlFuv2cssDorZTrMf-0htyZAoeZ0c" />
+      </head>
       <body className={inter.className}>
         <AuthContext>
           <ToasterContext />
