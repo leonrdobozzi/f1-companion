@@ -6,7 +6,7 @@ import LinkButton from "../LinkButton";
 export default function MobileMenu() {
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   return (
-    <>
+    <div className="lg:hidden relative">
       <button
         onClick={() => setMenuIsOpen(!menuIsOpen)}
         className="py-2 px-4 rounded-md text-white gap-2 bg-[#DA2535] flex justify-between items-center lg:hidden"
@@ -50,7 +50,7 @@ export default function MobileMenu() {
         </svg>
       </button>
       <nav
-        className={`lg:hidden fixed w-full h-full bg-gray-500 top-0 ${
+        className={`lg:hidden fixed w-full h-full min-h-max p-5  bg-gray-500 top-[250px] ${
           menuIsOpen ? "left-0" : "left-[150%]"
         } flex flex-col items-center justify-center gap-10 transition-all z-50`}
       >
@@ -58,7 +58,7 @@ export default function MobileMenu() {
           <LinkButton link="standings" text="Classificação" />
         </div>
         <div onClick={() => setMenuIsOpen(!menuIsOpen)}>
-          <LinkButton link="races" text="Próximas corridas" />
+          <LinkButton link="races" text="Próximas corridas" />;
         </div>
         <button
           onClick={() => setMenuIsOpen(!menuIsOpen)}
@@ -67,6 +67,6 @@ export default function MobileMenu() {
           Fechar menu
         </button>
       </nav>
-    </>
+    </div>
   );
 }

@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 export default function Bets() {
   const [drivers, setDrivers] = useState<IDriver[]>([]);
   const [findedDriver, setFindedDriver] = useState<IDriver[]>([]);
+  const [isVisible, setVisible] = useState(true);
   const [finding, setFinding] = useState<Boolean>(false);
   const [driver, setDriver] = useState<IDriver>();
   const [nextRaceDetails, setNextRaceDetails] = useState<INextRace>();
@@ -88,8 +89,40 @@ export default function Bets() {
       setIsVoted(true);
   }, [session?.user?.email]);
 
+  async function getCurrentRaces() {
+    const { data } = await api.get("/current.json");
+
+    const actualDate = new Date();
+
+    const nextRaceFilter = data.MRData.RaceTable.Races.filter(
+      (item: INextRace) => {
+        const itemDate = new Date(
+          item.date.split("-")[0] +
+            "-" +
+            item.date.split("-")[1] +
+            "-" +
+            item.date.split("-")[2],
+        );
+
+        if (actualDate > itemDate) {
+          setVisible(false);
+        }
+
+        return actualDate <= itemDate;
+      },
+    );
+  }
+
+  useEffect(() => {
+    getCurrentRaces();
+  }, []);
+
   return (
-    <div className={`relative ${!session && "hidden"}`}>
+    <div
+      className={`relative ${!session && "hidden"} ${
+        isVisible ? "block" : "hidden"
+      }`}
+    >
       {isLoading ? <Loading /> : null}
       <div
         className={`absolute top-0 w-full h-full bg-[#181818] z-50 pointer-events-none bg-opacity-90 backdrop-blur-lg flex items-center justify-center ${

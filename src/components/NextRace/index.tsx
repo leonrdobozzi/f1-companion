@@ -7,6 +7,7 @@ import { INextRace } from "@/@types";
 
 export default function NextRace() {
   const [nextRace, setNextRace] = useState<INextRace>();
+  const [isVisible, setVisible] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   async function getCurrentRaces() {
     const { data } = await api.get("/current.json");
@@ -23,6 +24,10 @@ export default function NextRace() {
             item.date.split("-")[2],
         );
 
+        if (actualDate > itemDate) {
+          setVisible(false);
+        }
+
         return actualDate <= itemDate;
       },
     );
@@ -34,9 +39,11 @@ export default function NextRace() {
   useEffect(() => {
     getCurrentRaces();
   }, []);
+
   return (
     <div
       className="relative px-6 lg:px-10 pt-6 lg:pt-10 pb-6 lg:pb-10 bg-[#1B1B1B]"
+      style={{ display: isVisible ? "block" : "none" }}
       id="nextRace"
     >
       <div className="max-w-[1280px] mx-auto">

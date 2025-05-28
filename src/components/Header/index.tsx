@@ -7,7 +7,7 @@ import DesktopMenu from "./DesktopMenu";
 export default function Header() {
   return (
     <header className="py-3 w-full lg:py-6 sticky top-0 backdrop-blur-sm">
-      <div className="max-w-[1280px] mx-auto w-full flex justify-between items-center">
+      <div className="max-w-[1280px] mx-auto w-full flex justify-between items-center relative">
         <Link href="/">
           <Image
             width={60}
