@@ -52,6 +52,7 @@ export default function Login() {
         <input
           className="w-96 h-10 px-5 rounded-md text-gray-800 placeholder:text-gray-800 outline-none"
           placeholder="Senha"
+          type="password"
           {...register("password")}
         />
         <input

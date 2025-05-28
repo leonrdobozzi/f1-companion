@@ -51,6 +51,7 @@ export default function Login() {
         <input
           className="w-96 h-10 px-5 rounded-md text-gray-800 placeholder:text-gray-800 outline-none"
           placeholder="Senha"
+          type="password"
           {...register("password")}
         />
         <input
@@ -59,11 +60,11 @@ export default function Login() {
           className="mt-2 bg-[#DA2535] w-full text-white text-base p-3 rounded-md block text-center hover:brightness-150 cursor-pointer"
         />
 
-        <Link className="text-white cursor-pointer" href="/">
+        <Link className="text-white cursor-pointer" href="/login">
           Ou então,
           <p className="inline text-[#DA2535] underline underline-offset-4 font-bold">
             {" "}
-            cadastre-se
+            Fazer login
           </p>
         </Link>
       </form>
